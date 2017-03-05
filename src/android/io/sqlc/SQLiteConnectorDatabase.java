@@ -32,6 +32,7 @@ import io.liteglue.SQLiteConnector;
 import io.liteglue.SQLiteConnection;
 import io.liteglue.SQLiteOpenFlags;
 import io.liteglue.SQLiteStatement;
+import io.liteglue.SQLiteNative;
 
 /**
  * Android SQLite-Connector Database helper class
@@ -55,7 +56,7 @@ class SQLiteConnectorDatabase extends SQLiteAndroidDatabase
     @Override
     void open(File dbFile) throws Exception {
         mydb = connector.newSQLiteConnection(dbFile.getAbsolutePath(),
-          SQLiteOpenFlags.READWRITE | SQLiteOpenFlags.CREATE);
+          SQLiteOpenFlags.READWRITE | SQLiteOpenFlags.CREATE | SQLiteNative.SQLC_OPEN_NOMUTEX);
     }
 
     /**
